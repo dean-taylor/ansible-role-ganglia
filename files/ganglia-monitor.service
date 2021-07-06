@@ -1,0 +1,12 @@
+[Unit]
+Description=Ganglia Monitor Daemon
+After=network-online.target
+
+[Service]
+Type=simple
+ExecStart=/usr/sbin/gmond -f --pid-file=/run/gmond.pid
+PIDFile=/run/gmond.pid
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

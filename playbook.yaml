@@ -1,0 +1,15 @@
+---
+- hosts: nimbus:&lxd
+  become: yes
+  roles:
+    - role: ganglia
+      vars:
+        ganglia_gmond_globals_debug_level: 0
+        ganglia_gmond_globals_send_metadata_interval: 60
+        ganglia_gmond_cluster_name: "Nimbus LXD"
+        ganglia_gmond_cluster_owner: "CeRDS"
+        ganglia_gmond_host_location: "Nimbus Pawsey"
+        ganglia_gmond_udp_send_channels:
+          - host: lxd-1
+        ganglia_gmond_udp_recv_channels:
+          - family: inet4

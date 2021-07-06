@@ -1,0 +1,14 @@
+---
+# Ganglia gmond configure
+- name: gmond.conf
+  ansible.builtin.template:
+    backup: yes
+    dest: /etc/ganglia/gmond.conf
+    group: root
+    lstrip_blocks: yes
+    mode: 0644
+    owner: root
+    src: gmond.conf.j2
+    trim_blocks: yes
+  notify:
+    - Restart gmond service

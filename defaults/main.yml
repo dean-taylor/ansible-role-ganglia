@@ -1,2 +1,30 @@
 ---
 # defaults file for ganglia
+ganglia_gmond_globals_debug_level: 0
+ganglia_gmond_globals_mute: no
+ganglia_gmond_globals_deaf: no
+ganglia_gmond_globals_send_metadata_interval: 0
+
+ganglia_gmond_cluster_name: unspecified
+ganglia_gmond_cluster_owner: unspecified
+ganglia_gmond_cluster_latlong: unspecified
+ganglia_gmond_cluster_url: unspecified
+
+ganglia_gmond_host_location: unspecified
+
+ganglia_gmond_udp_send_channels:
+  - mcast_join: 239.2.11.71
+    port: 8649
+    ttl: 1
+
+ganglia_gmond_udp_recv_channels:
+  - mcast_join: 239.2.11.71
+    port: 8649
+    bind: 239.2.11.71
+
+ganglia_gmond_tcp_accept_channels:
+  - port: 8649
+
+ganglia_gmond_modules: []
+
+ganglia_gmond_recievers: []

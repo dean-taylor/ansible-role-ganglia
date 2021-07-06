@@ -1,0 +1,26 @@
+---
+- name: install
+  ansible.builtin.apt:
+    cache_valid_time: 86400
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - ganglia-monitor
+    - ganglia-monitor-python
+    - ganglia-modules-linux
+
+- name: gmond systemd
+  ansible.builtin.copy:
+    dest: /etc/systemd/system/ganglia-monitor.service
+    group: root
+    mode: 0644
+    owner: root
+    src: ganglia-monitor.service
+  notify:
+    - Systemd daemon reload
+    - Restart gmond service
+
+- name: modpython disable
+  ansible.builtin.command:
+    cmd: mv /etc/ganglia/conf.d/modpython.conf /etc/ganglia/conf.d/modpython.conf.disabled
+    removes: /etc/ganglia/conf.d/modpython.conf

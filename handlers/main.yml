@@ -1,2 +1,10 @@
 ---
 # handlers file for ganglia
+- name: Restart gmond service
+  ansible.builtin.service:
+    name: ganglia-monitor.service
+    state: restarted
+
+- name: Systemd daemon reload
+  ansible.builtin.systemd:
+    daemon_reload: yes
